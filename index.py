@@ -26,16 +26,34 @@ def showAllWarehouses(warehouses):
         print "There are no warehouses to show."
     else:
         for i in warehouses:
-            print "Name: {} capacity: {}".format(i.name, i.capacity)
+            print "Warehouse name: {}, Total capacity: {}".format(i.name, i.capacity)
 
 
+def findPlace(lst, item_name):
+    """
+       args: lst will be any list
+       function: search through the list for the warehouse/product
+       returns: an int this will be the place in the list the 
+       warehouse/product is
+    """
+    count = 0
+    for i in lst:
+        if i.name ==item_name:
+        	return count
+        else:
+            count += 1
+
+
+#def renameWarehouse(ware)
 
 def test():
     warehouses = []
     showAllWarehouses(warehouses)
     addWarehouse(warehouses)
     warehouses.append(Inventory('two',90))
+    warehouses.append(Inventory('North',200))
     showAllWarehouses(warehouses)
-
+    place = findPlace(warehouses, 'North')
+    print warehouses[2].name
 test()
 
