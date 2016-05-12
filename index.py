@@ -29,7 +29,8 @@ def showAllWarehouses(warehouses):
             print "Warehouse name: {}, Total capacity: {}".format(i.name, i.capacity)
 
 
-def findPlace(lst, item_name):
+#think about turning findPlace() into a decorator
+def findPosition(lst, item_name):
     """
        args: lst will be any list
        function: search through the list for the warehouse/product
@@ -38,13 +39,48 @@ def findPlace(lst, item_name):
     """
     count = 0
     for i in lst:
-        if i.name ==item_name:
+        if i.name == item_name:
         	return count
         else:
             count += 1
 
+# try removing user input to another function and let this function just 
+# do the alterations
+def renameWarehouse(warehouses):
+    """
+        args: warehouse list of warehouse.
 
-#def renameWarehouse(ware)
+       changes the name of a warehouse
+    """
+    showAllWarehouses(warehouses)
+    print "what warehouse would you like to rename: \n"
+    choice = raw_input("> ") # what if a warehouse is not in the list
+    id = findPosition(warehouses, choice)
+    
+    print "What is the new name for the warehouse: "
+    newName = raw_input("> ")
+    warehouses[id].name = newName
+
+
+def deleteWarehouse(warehouses):
+    """
+        args: warehouses list of warehouses
+        funct: deletes a warehouse
+    """
+    showAllWarehouses(warehouses) # what if there are more warehouse than space on the page
+    print "What warehouse would you like to delete:"
+    name = raw_input(">")# what if a warehouse entered is not in the list
+    id = findPosition(warehouses, name)
+    warehouses.pop(id)
+    showAllWarehouses(warehouses)
+    
+
+def addProduct(warehouses):
+    print "What warehouse would you like to add a product to:"
+    name = raw_input("> ")
+    id = findPosition(warehouses, name)
+    warehouse
+
 
 def test():
     warehouses = []
@@ -53,7 +89,12 @@ def test():
     warehouses.append(Inventory('two',90))
     warehouses.append(Inventory('North',200))
     showAllWarehouses(warehouses)
-    place = findPlace(warehouses, 'North')
+    place = findPosition(warehouses, 'North')
     print warehouses[2].name
+    showAllWarehouses(warehouses)
+    deleteWarehouse(warehouses)
+
+
+
 test()
 
