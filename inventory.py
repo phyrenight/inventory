@@ -1,3 +1,4 @@
+from product import Product
 class Inventory(object):
     """Keeps track of all products """
     name = ""
@@ -14,7 +15,7 @@ class Inventory(object):
         """ used to add items to inventory and 
             decrease the amount of space available in inventory
         """
-        self.invent.append = product(id, price, quantity)
+        self.invent.append(Product(id, price, quantity))
         self.available_space -= quantity
         self.total_inventory += quantity
 
@@ -23,7 +24,7 @@ class Inventory(object):
            used to reorder products and for products
            return by customers.
         """
-        for i in invent:
+        for i in self.invent:
             if i == id:
                 i.refill_product(how_much)
 
@@ -31,5 +32,8 @@ class Inventory(object):
         """
             prints out all of the inventory( id, price, quantity)
         """
-        for i in invent:
-            print i
+        for i in self.invent:
+            print i.id
+            print i.price
+            print i.quantity
+        print "Current available space in this warehouse is {}.".format(self.available_space)

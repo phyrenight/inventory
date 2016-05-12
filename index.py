@@ -75,11 +75,24 @@ def deleteWarehouse(warehouses):
     showAllWarehouses(warehouses)
     
 
-def addProduct(warehouses):
+def newProduct(warehouses):
+    """
+        args: warehouses list of warehouses
+    """
+    
     print "What warehouse would you like to add a product to:"
     name = raw_input("> ")
     id = findPosition(warehouses, name)
-    warehouse
+    # put in try blocks to make sure users are entering proper values
+    print "what product would you like to add:"
+    productName = raw_input("> ")
+    print "What is the price of the item?"
+    productPrice = float(raw_input("> "))
+    print "How many are being places in this warehouse: "
+    productQuantity = int(raw_input("> "))
+    warehouses[id].add_inventory(productName, productPrice, productQuantity)
+    print "Current warehouse inventory: "
+    warehouses[id].print_inventory()
 
 
 def test():
@@ -93,6 +106,7 @@ def test():
     print warehouses[2].name
     showAllWarehouses(warehouses)
     deleteWarehouse(warehouses)
+    newProduct(warehouses)
 
 
 
